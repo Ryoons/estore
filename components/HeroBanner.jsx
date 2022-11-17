@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 
 const HeroBanner = () => {
+
   return (
     <div className='hero-banner-container'>
     <div>

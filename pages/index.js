@@ -19,7 +19,10 @@ const Home = ({ products, bannerData }) => (
         />)}
       </div>
 
-      <FooterBanner/>
+      <FooterBanner
+      // passing data into banner data
+        footerBanner={bannerData && bannerData[0]}
+      />
     </div>
 );
 

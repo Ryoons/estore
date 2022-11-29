@@ -2,7 +2,7 @@ import React from 'react'
 // images called 
 import { client, urlFor } from '../../lib/client';
 
-const ProductDetails = (product, products) => {
+const ProductDetails = ({ product, products }) => {
 
     // make it easier to call instead product.image
     const { image, name, details, price } = product;
@@ -41,6 +41,7 @@ export const getStaticPaths = async () => {
 
 // from index.js but changing it a little for product page
 // using getStaticProps to pre-render page
+
 export const getStaticProps = async ({ params: { slug }}) => {
     const query = `*[_type == "product" && slug.current == '${slug}'][0]`;
     const productsQuery = '*[_type == "product"]';
@@ -48,8 +49,6 @@ export const getStaticProps = async ({ params: { slug }}) => {
     const product = await client.fetch(query);
     const products = await client.fetch(productsQuery);
 
-
-  
     return {
       props: { products, product }
     }

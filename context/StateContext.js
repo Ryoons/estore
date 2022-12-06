@@ -11,6 +11,16 @@ export const StateContext = ({ children }) => {
     const [totalQuantity, settotalQuantity] = useState();
     const [qty, setQty] = useState(1);
 
+    //adding items to cart, if item already in cart then add more instead of new
+    const onAdd = (product, quantity) => {
+        const checkProductInCart = cartItems.find((item) => item._id === product._id);
+
+        if(checkProductInCart) {
+            settotalPrice((prevTotalPrice) => prevTotalPrice + product.price * quantity)
+            
+        }
+    }
+
     const incQty = () => {
         setQty((prevQty) => prevQty + 1)
     }

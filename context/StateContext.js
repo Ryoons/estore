@@ -6,9 +6,9 @@ const Context = createContext();
 export const StateContext = ({ children }) => {
 
     const [showCart, setShowCart] = useState(false);
-    const [cartItems, setcartItems] = useState();
-    const [totalPrice, settotalPrice] = useState();
-    const [totalQuantity, settotalQuantity] = useState();
+    const [cartItems, setCartItems] = useState();
+    const [totalPrice, setTotalPrice] = useState();
+    const [totalQuantity, setTotalQuantity] = useState();
     const [qty, setQty] = useState(1);
 
     //adding items to cart, if item already in cart then add more instead of new
@@ -16,8 +16,15 @@ export const StateContext = ({ children }) => {
         const checkProductInCart = cartItems.find((item) => item._id === product._id);
 
         if(checkProductInCart) {
-            settotalPrice((prevTotalPrice) => prevTotalPrice + product.price * quantity)
-            
+            setTotalPrice((prevTotalPrice) => prevTotalPrice + product.price * quantity)
+            setTotalQuantity((prevTotalQuantity) => prevTotalQuantity + product.quantity)
+
+            const updatedCartItems = cartItems.map((cartProduct) => {
+                if(cartProduct._id === product._id) return {
+                    ...cartProduct,
+                    quantity: cartProduct.quantity + quantity
+                }
+            })
         }
     }
 

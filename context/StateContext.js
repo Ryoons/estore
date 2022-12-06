@@ -21,6 +21,7 @@ export const StateContext = ({ children }) => {
 
             const updatedCartItems = cartItems.map((cartProduct) => {
                 if(cartProduct._id === product._id) return {
+                    // spread into cart
                     ...cartProduct,
                     quantity: cartProduct.quantity + quantity
                 }

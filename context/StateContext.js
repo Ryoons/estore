@@ -15,9 +15,10 @@ export const StateContext = ({ children }) => {
     const onAdd = (product, quantity) => {
         const checkProductInCart = cartItems.find((item) => item._id === product._id);
 
+        setTotalPrice((prevTotalPrice) => prevTotalPrice + product.price * quantity);
+        setTotalQuantity((prevTotalQuantity) => prevTotalQuantity + product.quantity);
+
         if(checkProductInCart) {
-            setTotalPrice((prevTotalPrice) => prevTotalPrice + product.price * quantity)
-            setTotalQuantity((prevTotalQuantity) => prevTotalQuantity + product.quantity)
 
             const updatedCartItems = cartItems.map((cartProduct) => {
                 if(cartProduct._id === product._id) return {
@@ -26,7 +27,13 @@ export const StateContext = ({ children }) => {
                     quantity: cartProduct.quantity + quantity
                 }
             })
+            setCartItems(updatedCartItems);
+            
+        } else {
+            product.quantity = quantity;
+            setCartItems([...cartItems, {...product}])
         }
+        toast.success(`${qty} ${product.name} added to cart.`);
     }
 
     const incQty = () => {

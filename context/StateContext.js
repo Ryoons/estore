@@ -39,10 +39,21 @@ export const StateContext = ({ children }) => {
         toast.success(`${qty} ${product.name} added to cart.`);
     }
 
+    const onRemove = (product) => { 
+        foundProduct = cartItems.find((item) => item._id === id);
+        const newCartItems = cartItems.filter((item) => item._id !== id);
+
+        setTotalPrice((prevTotalPrice) => prevTotalPrice - foundProduct.price * foundProduct.quantity);
+        setTotalQuantity(prevTotalQuantity => prevTotalQuantity - foundProduct.quantity);
+
+        setCartItems(newCartItems);
+
+    }
+
     const toggleCartItemQuant = (id, value) => {
         foundProduct = cartItems.find((item) => item._id === id);
         index = cartItems.findIndex((product) => product._id === id);
-        const newCartItems = cartItems.splice(index, 1);
+        const newCartItems = cartItems.filter((item) => item._id !== id);
 
         if(value === 'inc' ) {    
             setCartItems([...newCartItems, {...foundProduct,quantity: foundProduct.quantity + 1}]);
@@ -81,7 +92,8 @@ export const StateContext = ({ children }) => {
                 incQty,
                 decQty,
                 onAdd,
-                toggleCartItemQuant
+                toggleCartItemQuant,
+                onRemove
             }}>
             {children}
         </Context.Provider>

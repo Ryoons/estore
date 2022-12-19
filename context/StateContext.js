@@ -11,6 +11,9 @@ export const StateContext = ({ children }) => {
     const [totalQuantity, setTotalQuantity] = useState(0);
     const [qty, setQty] = useState(1);
 
+    let foundProduct;
+    let index;
+
     //adding items to cart, if item already in cart then add more instead of new
     const onAdd = (product, quantity) => {
         const checkProductInCart = cartItems.find((item) => item._id === product._id);
@@ -34,6 +37,22 @@ export const StateContext = ({ children }) => {
             setCartItems([...cartItems, {...product}])
         }
         toast.success(`${qty} ${product.name} added to cart.`);
+    }
+
+    const toggleCartItemQuant = (id, value) => {
+        foundProduct = cartItems.find((item) => item._id === id);
+        index = cartItems.findIndex((product) => product._id === id);
+
+        if(value === 'inc' ) {
+            let newCartItems = [...cartItems, {...foundProduct,
+                 quantity: foundProduct.quantity + 1}];
+
+            setCartItems(newCartItems);
+            setTotalPrice((prevTotalPrice) => prevTotalPrice + foundProduct.price)
+            setTotalQuantity(prevTotalQuantity => prevTotalQuantity + 1)
+        } else if (value === 'dec') {
+
+        }
     }
 
     const incQty = () => {

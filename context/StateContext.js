@@ -44,15 +44,16 @@ export const StateContext = ({ children }) => {
         index = cartItems.findIndex((product) => product._id === id);
 
         if(value === 'inc' ) {
-            let newCartItems = [...cartItems, {...foundProduct,
-                 quantity: foundProduct.quantity + 1}];
-
-            setCartItems(newCartItems);
+            setCartItems([...cartItems, {...foundProduct,quantity: foundProduct.quantity + 1}]);
             setTotalPrice((prevTotalPrice) => prevTotalPrice + foundProduct.price)
             setTotalQuantity(prevTotalQuantity => prevTotalQuantity + 1)
         } else if (value === 'dec') {
-
-        }
+            if (foundProduct.quantity > 1) {
+            setCartItems([...cartItems, {...foundProduct,quantity: foundProduct.quantity - 1}]);
+            setTotalPrice((prevTotalPrice) => prevTotalPrice - foundProduct.price)
+            setTotalQuantity(prevTotalQuantity => prevTotalQuantity - 1)
+         }
+      }
     }
 
     const incQty = () => {
@@ -77,7 +78,8 @@ export const StateContext = ({ children }) => {
                 qty,
                 incQty,
                 decQty,
-                onAdd
+                onAdd,
+                toggleCartItemQuant
             }}>
             {children}
         </Context.Provider>

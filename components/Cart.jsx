@@ -17,7 +17,7 @@ const Cart = () => {
       <button type='button' className='cart-heading' onClick={() => setShowCart(false)}>
         <AiOutlineLeft />
         <span className='heading'> Your Cart </span>
-        <span className='cart-num-items'>({totalQuantity} Items)</span>
+        <span className='cart-num-items'>({totalQuantity})</span>
       </button>
 
       {cartItems.length < 1 && (
@@ -61,7 +61,7 @@ const Cart = () => {
                 type='button'
                 className='remove-item'
                 onClick={() => onRemove(item)}>
-                  <TiDeleteOutline />
+                  <TiDeleteOutline size={40}/>
                 </button>
               </div>
             </div>

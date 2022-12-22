@@ -17,6 +17,7 @@ export default async function handler(req, res) {
                 { shipping_rate: 'shr_1MHDqsKbJ6Y524PXSWGfl6ER'},
             ],
 
+            // did not need to call cartItems, declared in body, so call body
             line_items: req.body.map((item) => {
                 const img = item.image[0].asset._ref;
                 const newImage = img.replace('image-', 'https://cdn.sanity.io/images/f4q1h5xm/production/').replace('-webp', '.webp');

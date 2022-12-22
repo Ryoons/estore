@@ -20,6 +20,7 @@ const Cart = () => {
       headers: { 
         'Content-Type': 'application/json',
       },
+      // making the cart items readable
       body: JSON.stringify(cartItems),
     });
     if(response.statusCode === 500) return;

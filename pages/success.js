@@ -6,6 +6,10 @@ import { useStateContext } from '../context/StateContext';
 
 const Success = () => {
   const { setCartItems, setTotalPrice, setTotalQuantity } = useStateContext();
+
+  useEffect(() => {
+
+  }, []);
   
   return (
     <div className='success-wrapper'>
@@ -17,7 +21,7 @@ const Success = () => {
         <p className='email-msg'>Confirmation has been sent to email.</p>
         <p>
           <Link href='/'>
-            <button type='button'>
+            <button type='button' className='btn-succ' >
               Home
             </button>
           </Link>

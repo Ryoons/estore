@@ -411,9 +411,30 @@ padding: 30px 65px;
     transform: scale(1, 1);
   transition: transform 0.5s ease;
 }
+.btn-succ{
+  width: 300px;
+  max-width: 300px;
+  padding: 10px 12px;
+  border-radius: 15px;
+  border: none;
+  font-size: 20px;
+  margin-top: 10px;
+  margin-top: 40px;
+  text-transform: capitalize;
+  background-color: #cb2525d6;
+  color: #fff;
+  cursor: pointer;
+    transform: scale(1, 1);
+  transition: transform 0.5s ease;
+}
+
 .btn:hover{
   transform: scale(1.1,1.1);
 }
+.btn-succ:hover{
+  transform: scale(1.1,1.1);
+}
+
 .product-detail-container{
   display: flex;
  gap: 40px;

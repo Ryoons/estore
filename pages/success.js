@@ -10,7 +10,7 @@ const Success = () => {
 
   // using this to empty the customer cart after transaction
   useEffect(() => {
-
+    localStorage.clear();
   }, []);
   
   return (

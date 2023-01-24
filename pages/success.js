@@ -12,7 +12,13 @@ const Success = () => {
   const [order, setOrder] = useState(null);
   
   return (
-    <div>Success</div>
+    <div className='success-wrapper'>
+      <div className='success'>
+        <p className='icon'>
+          <BsBagCheckFill />
+        </p>
+      </div>
+    </div>
   )
 }
 

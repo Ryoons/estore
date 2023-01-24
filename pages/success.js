@@ -5,8 +5,10 @@ import { BsBagCheckFill } from 'react-icons/bs';
 import { useStateContext } from '../context/StateContext';
 
 const Success = () => {
+  // grabing all the stuff
   const { setCartItems, setTotalPrice, setTotalQuantity } = useStateContext();
 
+  // using this to empty the customer cart after transaction
   useEffect(() => {
 
   }, []);

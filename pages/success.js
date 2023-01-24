@@ -11,6 +11,9 @@ const Success = () => {
   // using this to empty the customer cart after transaction
   useEffect(() => {
     localStorage.clear();
+    setCartItems([]);
+    setTotalPrice(0);
+    setTotalQuantity(0);
   }, []);
   
   return (

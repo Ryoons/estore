@@ -10,7 +10,14 @@ const ProductDetails = ({ product, products }) => {
     // make it easier to call instead product.image
     const { image, name, details, price } = product;
     const [ index, setIndex ] = useState(0);
-    const { decQty, incQty, qty, onAdd } = useStateContext();
+    const { decQty, incQty, qty, onAdd, setShowCart } = useStateContext();
+
+    // creating the buy now function
+    const handleBuyNow = () => { 
+        onAdd(product, qty);
+        setShowCart(true);
+        
+    }
 
   return (
     <div>
@@ -64,7 +71,7 @@ const ProductDetails = ({ product, products }) => {
                     <button type='button' className='add-to-cart' onClick={() => onAdd(product, qty)}>
                         Add to Cart
                     </button>
-                    <button type='button' className='buy-now' onClick="">
+                    <button type='button' className='buy-now' onClick={handleBuyNow}>
                         Buy Now
                     </button>
                 </div>

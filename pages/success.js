@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { BsBagCheckFill } from 'react-icons/bs';
 
 import { useStateContext } from '../context/StateContext';
+import { playConfetti } from '../lib/utils';
 
 const Success = () => {
   // grabing all the stuff
@@ -14,6 +15,7 @@ const Success = () => {
     setCartItems([]);
     setTotalPrice(0);
     setTotalQuantity(0);
+    playConfetti();
   }, []);
   
   return (

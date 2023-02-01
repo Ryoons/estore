@@ -18,5 +18,8 @@
     "react-hot-toast": "^2.4.0",
     "react-icons": "^4.7.1",
     "stripe": "^11.4.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.33.0"
   }
 }

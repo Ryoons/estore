@@ -46,9 +46,13 @@ const ProductDetails = ({ product, products }) => {
                         <AiFillStar />
                         <AiFillStar />
                         <AiFillStar />
-                        <AiFillStar />
+                        <AiFillStar /> 
+                        {/* this will always be 5 stars, hard coded */}
+
                     </div>
                     <p>(20)</p>
+                    {/* this will also be always hardcoded */}
+                    
                 </div>
                 <h4>Specifications</h4>
                 <p>{details}</p>

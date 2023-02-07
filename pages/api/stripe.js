@@ -16,7 +16,8 @@ export default async function handler(req, res) {
                 { shipping_rate: 'shr_1MHDprKbJ6Y524PXMVlcNNDX' },
                 { shipping_rate: 'shr_1MHDqsKbJ6Y524PXSWGfl6ER'},
             ],
-
+            
+            
             // did not need to call cartItems, declared in body, so call body
             line_items: req.body.map((item) => {
                 const img = item.image[0].asset._ref;
